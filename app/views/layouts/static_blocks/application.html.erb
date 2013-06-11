@@ -10,5 +10,13 @@
 
 <%= yield %>
 
+<script type="text/javascript">
+  $('.wysihtml5').each(function(i, elem) {
+    $(elem).wysihtml5({
+      html: true
+    });
+  });
+</script>
+
 </body>
 </html>
