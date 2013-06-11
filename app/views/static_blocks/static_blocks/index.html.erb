@@ -1,0 +1,27 @@
+<h1>Listing static_blocks</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Content</th>
+    <th>Status</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @static_blocks.each do |static_block| %>
+  <tr>
+    <td><%= static_block.title %></td>
+    <td><%= static_block.content %></td>
+    <td><%= static_block.status %></td>
+    <td><%= link_to 'Show', static_block %></td>
+    <td><%= link_to 'Edit', edit_static_block_path(static_block) %></td>
+    <td><%= link_to 'Destroy', static_block, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Static block', new_static_block_path %>

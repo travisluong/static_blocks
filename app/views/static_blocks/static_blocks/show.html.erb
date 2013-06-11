@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @static_block.title %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%= @static_block.content %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @static_block.status %>
+</p>
+
+
+<%= link_to 'Edit', edit_static_block_path(@static_block) %> |
+<%= link_to 'Back', static_blocks_path %>
