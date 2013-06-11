@@ -3,4 +3,12 @@
   They will automatically be included in application.css.
 *= require bootstrap-wysihtml5
 */
-@import "bootstrap"
+@import "bootstrap";
+
+.wysihtml5 {
+  width: 100%;
+}
+
+.navbar .container {
+  width: 940px;
+}

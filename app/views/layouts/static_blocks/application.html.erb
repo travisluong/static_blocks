@@ -8,15 +8,43 @@
 </head>
 <body>
 
-<%= yield %>
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="container">
+        <%= link_to "Static Blocks", static_blocks_path, :class => "brand" %>
+        <div class="nav-collapse collapse">
+          <ul class="nav pull-right">
+            <li><%= link_to "List", static_blocks_path %></li>
+            <li><%= link_to "New", new_static_block_path %></li>
+            <li><%= link_to "Sign Out" %></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+  </div>
 
-<script type="text/javascript">
+  <div class="container">
+
+    <% flash.each do |name, msg| %>
+    <% if msg.is_a?(String) %>
+    <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
+      <a class="close" data-dismiss="alert">&#215;</a>
+      <%= content_tag :div, msg, :id => "flash_#{name}" %>
+    </div>
+    <% end %>
+    <% end %>
+
+    <%= yield %>
+
+  </div>
+
+  <script type="text/javascript">
   $('.wysihtml5').each(function(i, elem) {
     $(elem).wysihtml5({
       html: true
     });
   });
-</script>
+  </script>
 
 </body>
 </html>

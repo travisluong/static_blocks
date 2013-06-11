@@ -564,3 +564,25 @@ Connecting to database specified by database.yml
   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "static_blocks_static_blocks" ("content", "created_at", "status", "title", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["content", "bar"], ["created_at", Tue, 11 Jun 2013 05:02:24 UTC +00:00], ["status", "published"], ["title", "foo"], ["updated_at", Tue, 11 Jun 2013 05:02:24 UTC +00:00]]
   [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
   [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+Connecting to database specified by database.yml
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (4.9ms)[0m  [1mINSERT INTO "static_blocks_static_blocks" ("content", "created_at", "status", "title", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["content", "bar"], ["created_at", Tue, 11 Jun 2013 05:11:30 UTC +00:00], ["status", "published"], ["title", "foo"], ["updated_at", Tue, 11 Jun 2013 05:11:30 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mStaticBlocks::StaticBlock Load (0.2ms)[0m  [1mSELECT "static_blocks_static_blocks".* FROM "static_blocks_static_blocks" WHERE "static_blocks_static_blocks"."status" = 'published' AND "static_blocks_static_blocks"."title" = 'foo' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "static_blocks_static_blocks" ("content", "created_at", "status", "title", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["content", "bar"], ["created_at", Tue, 11 Jun 2013 05:11:30 UTC +00:00], ["status", "published"], ["title", "foo"], ["updated_at", Tue, 11 Jun 2013 05:11:30 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "static_blocks_static_blocks" ("content", "created_at", "status", "title", "updated_at") VALUES (?, ?, ?, ?, ?)  [["content", "bar"], ["created_at", Tue, 11 Jun 2013 05:11:30 UTC +00:00], ["status", "published"], ["title", "foo"], ["updated_at", Tue, 11 Jun 2013 05:11:30 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "static_blocks_static_blocks" ("content", "created_at", "status", "title", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["content", "bar"], ["created_at", Tue, 11 Jun 2013 05:11:30 UTC +00:00], ["status", "published"], ["title", "foo"], ["updated_at", Tue, 11 Jun 2013 05:11:30 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
