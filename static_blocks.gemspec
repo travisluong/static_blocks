@@ -7,17 +7,19 @@ require "static_blocks/version"
 Gem::Specification.new do |s|
   s.name        = "static_blocks"
   s.version     = StaticBlocks::VERSION
-  s.authors     = ["TODO: Your name"]
-  s.email       = ["TODO: Your email"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of StaticBlocks."
-  s.description = "TODO: Description of StaticBlocks."
+  s.authors     = ["Travis Luong"]
+  s.email       = ["travis@travisluong.com"]
+  s.homepage    = "https://github.com/travisluong/static_blocks"
+  s.summary     = "Summary of StaticBlocks."
+  s.description = "Description of StaticBlocks."
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]
 
   s.add_dependency "rails", "~> 3.2.13"
-  # s.add_dependency "jquery-rails"
+  s.add_dependency "jquery-rails"
 
   s.add_development_dependency "sqlite3"
+  s.add_development_dependency "rspec-rails"
+  s.add_development_dependency "capybara"
 end
