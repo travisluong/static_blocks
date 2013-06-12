@@ -5,6 +5,7 @@ PATH
       bootstrap-kaminari-views
       bootstrap-sass
       bootstrap-wysihtml5-rails
+      globalize3
       jquery-rails
       kaminari
       rails (~> 3.2.13)
@@ -58,6 +59,10 @@ GEM
       xpath (~> 2.0)
     diff-lcs (1.2.4)
     erubis (2.7.0)
+    globalize3 (0.3.0)
+      activemodel (>= 3.0.0)
+      activerecord (>= 3.0.0)
+      paper_trail (~> 2)
     hike (1.2.3)
     i18n (0.6.1)
     journey (1.0.4)
@@ -76,6 +81,9 @@ GEM
     multi_json (1.7.6)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
+    paper_trail (2.7.2)
+      activerecord (~> 3.0)
+      railties (~> 3.0)
     polyamorous (0.5.0)
       activerecord (~> 3.0)
     polyglot (0.3.3)

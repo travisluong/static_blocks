@@ -11,7 +11,7 @@
       <%= f.text_field :content_cont %>
     </div>
     <div class="field">
-      <%= f.label :status_cont %>
+      <%= f.label :status_cont, "Status contains" %>
       <%= f.select(:status_cont, [['', ''], ['Draft', 'draft'], ['Published', 'published']]) %>
     </div>
     <div class="actions"><%= f.submit "Search" %></div>

@@ -3,6 +3,7 @@ module StaticBlocks
     attr_accessible :content, :status, :title
     after_save :clear_cache
     scope :published, where(:status => 'published')
+    translates :content
 
     def to_s
       content

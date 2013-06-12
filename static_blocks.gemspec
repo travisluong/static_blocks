@@ -24,6 +24,7 @@ Gem::Specification.new do |s|
   s.add_dependency "ransack"
   s.add_dependency "kaminari"
   s.add_dependency "bootstrap-kaminari-views"
+  s.add_dependency "globalize3"
 
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "rspec-rails"

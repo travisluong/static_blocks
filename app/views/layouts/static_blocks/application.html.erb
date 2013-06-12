@@ -34,6 +34,14 @@
     <% end %>
     <% end %>
 
+    <div id="locale">
+      Language
+
+      <% StaticBlocks.config.locales.each do |loc| %>
+        <%= link_to_unless_current loc, locale: loc %>
+      <% end %>
+    </div>
+
     <%= yield %>
 
   </div>
