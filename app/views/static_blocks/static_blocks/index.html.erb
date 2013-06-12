@@ -1,10 +1,27 @@
 <h1>Listing static blocks</h1>
 
-<table class="table table-striped">
+<div class="well">
+  <%= search_form_for @search do |f| %>
+    <div class="field">
+      <%= f.label :title_cont, "Title contains" %>
+      <%= f.text_field :title_cont %>
+    </div>
+    <div class="field">
+      <%= f.label :content_cont, "Content contains" %>
+      <%= f.text_field :content_cont %>
+    </div>
+    <div class="field">
+      <%= f.label :status_cont %>
+      <%= f.select(:status_cont, [['', ''], ['Draft', 'draft'], ['Published', 'published']]) %>
+    </div>
+    <div class="actions"><%= f.submit "Search" %></div>
+  <% end %>
+</div>
+<table id="static-block-list" class="table table-striped">
   <tr>
-    <th>Title</th>
-    <th>Content</th>
-    <th>Status</th>
+    <th style="min-width: 60px;"><%= sort_link(@search, :title, "Title") %></th>
+    <th><%= sort_link(@search, :content, "Content") %></th>
+    <th style="min-width: 80px;"><%= sort_link(@search, :status, "Status") %></th>
     <th></th>
     <th></th>
     <th></th>

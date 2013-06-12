@@ -2,6 +2,7 @@ require "jquery-rails"
 require "sass-rails"
 require "bootstrap-sass"
 require "bootstrap-wysihtml5-rails"
+require "ransack"
 
 module StaticBlocks
   class Engine < ::Rails::Engine

@@ -5,46 +5,47 @@ module StaticBlocks
     # GET /static_blocks
     # GET /static_blocks.json
     def index
-      @static_blocks = StaticBlock.all
-  
+      @search = StaticBlock.search(params[:q])
+      @static_blocks = @search.result
+
       respond_to do |format|
         format.html # index.html.erb
         format.json { render json: @static_blocks }
       end
     end
-  
+
     # GET /static_blocks/1
     # GET /static_blocks/1.json
     def show
       @static_block = StaticBlock.find(params[:id])
-  
+
       respond_to do |format|
         format.html # show.html.erb
         format.json { render json: @static_block }
       end
     end
-  
+
     # GET /static_blocks/new
     # GET /static_blocks/new.json
     def new
       @static_block = StaticBlock.new
-  
+
       respond_to do |format|
         format.html # new.html.erb
         format.json { render json: @static_block }
       end
     end
-  
+
     # GET /static_blocks/1/edit
     def edit
       @static_block = StaticBlock.find(params[:id])
     end
-  
+
     # POST /static_blocks
     # POST /static_blocks.json
     def create
       @static_block = StaticBlock.new(params[:static_block])
-  
+
       respond_to do |format|
         if @static_block.save
           format.html { redirect_to @static_block, notice: 'Static block was successfully created.' }
@@ -55,12 +56,12 @@ module StaticBlocks
         end
       end
     end
-  
+
     # PUT /static_blocks/1
     # PUT /static_blocks/1.json
     def update
       @static_block = StaticBlock.find(params[:id])
-  
+
       respond_to do |format|
         if @static_block.update_attributes(params[:static_block])
           format.html { redirect_to @static_block, notice: 'Static block was successfully updated.' }
@@ -71,13 +72,13 @@ module StaticBlocks
         end
       end
     end
-  
+
     # DELETE /static_blocks/1
     # DELETE /static_blocks/1.json
     def destroy
       @static_block = StaticBlock.find(params[:id])
       @static_block.destroy
-  
+
       respond_to do |format|
         format.html { redirect_to static_blocks_url }
         format.json { head :no_content }
