@@ -18,7 +18,7 @@
   <% end %>
 </div>
 
-<%= paginate @static_blocks %>
+<%= paginate @static_blocks, :theme => 'twitter-bootstrap' %>
 
 <table id="static-block-list" class="table table-striped">
   <tr>
@@ -41,3 +41,5 @@
   </tr>
   <% end %>
 </table>
+
+<%= paginate @static_blocks, :theme => 'twitter-bootstrap' %>

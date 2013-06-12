@@ -4,6 +4,7 @@ require "bootstrap-sass"
 require "bootstrap-wysihtml5-rails"
 require "ransack"
 require "kaminari"
+require "bootstrap-kaminari-views"
 
 module StaticBlocks
   class Engine < ::Rails::Engine
