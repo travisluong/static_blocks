@@ -17,6 +17,9 @@
     <div class="actions"><%= f.submit "Search" %></div>
   <% end %>
 </div>
+
+<%= paginate @static_blocks %>
+
 <table id="static-block-list" class="table table-striped">
   <tr>
     <th style="min-width: 60px;"><%= sort_link(@search, :title, "Title") %></th>

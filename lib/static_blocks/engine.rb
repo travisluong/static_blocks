@@ -3,6 +3,7 @@ require "sass-rails"
 require "bootstrap-sass"
 require "bootstrap-wysihtml5-rails"
 require "ransack"
+require "kaminari"
 
 module StaticBlocks
   class Engine < ::Rails::Engine

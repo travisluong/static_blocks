@@ -6,7 +6,7 @@ module StaticBlocks
     # GET /static_blocks.json
     def index
       @search = StaticBlock.search(params[:q])
-      @static_blocks = @search.result
+      @static_blocks = @search.result.page(params[:page]).per(10)
 
       respond_to do |format|
         format.html # index.html.erb
