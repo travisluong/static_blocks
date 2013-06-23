@@ -1,5 +1,10 @@
 module StaticBlocks
   class ApplicationController < ActionController::Base
+
+    if StaticBlocks.config.http_auth
+      http_basic_authenticate_with :name => StaticBlocks.config.username, :password => StaticBlocks.config.password
+    end
+
     before_filter :set_locale
 
     private

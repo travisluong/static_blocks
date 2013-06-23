@@ -15,7 +15,13 @@ module StaticBlocks
   end
 
   def self.config(&block)
-    @@config ||= StaticBlocks::Engine::Configuration.new
+    unless defined? @@config
+      @@config ||= StaticBlocks::Engine::Configuration.new
+      @@config.locales = ['en']
+      @@config.http_auth = false
+      @@config.username = "admin"
+      @@config.password = "password"
+    end
 
     yield @@config if block
 
