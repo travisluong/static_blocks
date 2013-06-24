@@ -1,15 +1,6 @@
 # Static Blocks
 
-Static Blocks is an ultra light-weight CMS for Ruby on Rails.
-
-This gem may be useful if you:
-
-* Want an easy way to manage pieces of content on your Rails app
-* Want to give clients the ability to make copy changes
-* Want a light CMS that is easy to integrate with existing apps
-* Do not want to hard code content into view templates
-* Do not want to pollute git repo with copy changes
-* Do not want to use a heavy CMS
+Static Blocks is an ultra light-weight CMS for Ruby on Rails. Create static blocks of content. Place them anywhere in your views.
 
 ## Features
 * Simple admin interface
@@ -57,9 +48,9 @@ When you ran the install generator, a configuration file should have been create
 ```ruby
 StaticBlocks.config do |config|
   config.locales = ['en']
-  config.http_auth = true
-  config.username = ENV['STATIC_BLOCKS_USERNAME'] || 'admin'
-  config.password = ENV['STATIC_BLOCKS_PASSWORD'] || 'password'
+  config.http_auth = false
+  config.username = ENV['STATIC_BLOCKS_USERNAME']
+  config.password = ENV['STATIC_BLOCKS_PASSWORD']
 end
 ```
 
@@ -73,8 +64,11 @@ config.locales = ['en', 'wk', 'zh', 'pirate']
 
 ### Optional http basic authentication
 
-Static Blocks also has an optional http basic authentication which is turned on by default. You will have to set environment variables for the username and password if you choose to use http basic authentication. If you have your own authentication, you can turn off http auth by setting it's option to false.
+Static Blocks has an optional http basic authentication which is turned off by default. To activate, set the config option to true and create environment variables for the username and password.
 
+```ruby
+config.http_auth = true
+```
 
 ## Usage
 
