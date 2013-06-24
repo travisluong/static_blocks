@@ -41,6 +41,17 @@ Mount engine in routes.rb:
 mount StaticBlocks::Engine => "/static_blocks_admin"
 ```
 
+## Usage
+
+Visit `/static_blocks_admin` and create some static blocks.
+
+Use the `static_block_for` method or it's alias `s` to output a block onto any view template. Pass in the title of the static block as argument. Use `raw` if you do not want to escape the html.
+
+```
+<%=raw static_block_for('foo') %>
+<%=raw s('foo') %>
+```
+
 ## Configuration
 
 When you ran the install generator, a configuration file should have been created in config/initializers/static_blocks.rb:
@@ -68,17 +79,6 @@ Static Blocks has an optional http basic authentication which is turned off by d
 
 ```ruby
 config.http_auth = true
-```
-
-## Usage
-
-Visit `/static_blocks_admin` and create some static blocks.
-
-Use the `static_block_for` method or it's alias `s` to output a block onto any view template. Pass in the title of the static block as argument. Use `raw` if you do not want to escape the html.
-
-```xml
-<%=raw static_block_for('foo') %>
-<%=raw s('foo') %>
 ```
 
 ## Credits
