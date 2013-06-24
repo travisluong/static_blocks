@@ -10,8 +10,8 @@ Gem::Specification.new do |s|
   s.authors     = ["Travis Luong"]
   s.email       = ["travis@travisluong.com"]
   s.homepage    = "https://github.com/travisluong/static_blocks"
-  s.summary     = "Summary of StaticBlocks."
-  s.description = "Description of StaticBlocks."
+  s.summary     = "Static Blocks is an ultra light-weight CMS for Ruby on Rails."
+  s.description = "Create static blocks of content. Place them anywhere in your views."
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.md"]
   s.test_files = Dir["spec/**/*"]
