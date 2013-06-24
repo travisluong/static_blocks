@@ -2,7 +2,12 @@ module StaticBlocks
   module StaticBlocksHelper
     def static_block_for(name, default = nil)
       Rails.cache.fetch("static_block::"+name.to_s) do
-        StaticBlock.published.find_by_title(name.to_s).content || default || "StaticBlock for #{name.to_s} missing"
+        static_block = StaticBlock.published.find_by_title(name.to_s)
+        if static_block
+          static_block.content
+        else
+          "StaticBlock for #{name.to_s} missing"
+        end
       end
     end
 
