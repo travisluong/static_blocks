@@ -12,6 +12,12 @@ module StaticBlocks
     isolate_namespace StaticBlocks
     config.generators.integration_tool :rspec
     config.generators.test_framework :rspec
+
+    initializer "static_blocks.include_helpers" do
+      ActiveSupport.on_load(:action_controller) do
+        helper StaticBlocks::StaticBlocksHelper
+      end
+    end
   end
 
   def self.config(&block)

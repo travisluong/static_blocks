@@ -15,5 +15,3 @@ module StaticBlocks
     alias_method :s, :static_block_for
   end
 end
-
-ActionView::Base.send(:include, StaticBlocks::StaticBlocksHelper)
