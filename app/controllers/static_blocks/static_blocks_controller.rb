@@ -2,6 +2,23 @@ require_dependency "static_blocks/application_controller"
 
 module StaticBlocks
   class StaticBlocksController < ApplicationController
+
+    def export
+      respond_to do |format|
+        format.csv do
+          send_data StaticBlock.to_csv
+        end
+      end
+    end
+
+    def export_translations
+      respond_to do |format|
+        format.csv do
+          send_data StaticBlock.translations_to_csv
+        end
+      end
+    end
+
     # GET /static_blocks
     # GET /static_blocks.json
     def index

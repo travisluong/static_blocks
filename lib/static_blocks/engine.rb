@@ -6,6 +6,7 @@ require "ransack"
 require "kaminari"
 require "bootstrap-kaminari-views"
 require "globalize3"
+require "csv"
 
 module StaticBlocks
   class Engine < ::Rails::Engine
