@@ -4,17 +4,21 @@ module StaticBlocks
   class StaticBlocksController < ApplicationController
 
     def export
+      t = Time.now.strftime('%Y%m%d%H%M%S')
+      filename = "static-blocks-#{t}.csv"
       respond_to do |format|
         format.csv do
-          send_data StaticBlock.to_csv
+          send_data StaticBlock.to_csv, :filename => filename
         end
       end
     end
 
     def export_translations
+        t = Time.now.strftime('%Y%m%d%H%M%S')
+        filename = "static-blocks-translations-#{t}.csv"
       respond_to do |format|
         format.csv do
-          send_data StaticBlock.translations_to_csv
+          send_data StaticBlock.translations_to_csv, :filename => filename
         end
       end
     end
