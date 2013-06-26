@@ -1,6 +1,7 @@
 <h1>Listing static blocks</h1>
-
-<div class="well">
+<div class="row">
+<div class="span6">
+  <h2>Search</h2>
   <%= search_form_for @search do |f| %>
     <div class="field">
       <%= f.label :title_cont, "Title contains" %>
@@ -16,6 +17,19 @@
     </div>
     <div class="actions"><%= f.submit "Search" %></div>
   <% end %>
+</div>
+<div class="span6">
+  <h2>Import</h2>
+  <%= form_tag import_static_blocks_path, multipart: true do %>
+    <%= file_field_tag :file %>
+    <%= submit_tag "Import" %>
+  <% end %>
+  <h2>Import Translations</h2>
+  <%= form_tag import_translations_static_blocks_path, multipart: true do %>
+    <%= file_field_tag :file %>
+    <%= submit_tag "Import Translations" %>
+  <% end %>
+</div>
 </div>
 
 <%= paginate @static_blocks, :theme => 'twitter-bootstrap' %>

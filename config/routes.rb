@@ -3,6 +3,8 @@ StaticBlocks::Engine.routes.draw do
     collection do
       get 'export'
       get 'export_translations'
+      post :import
+      post :import_translations
     end
   end
   root to: 'static_blocks#index'

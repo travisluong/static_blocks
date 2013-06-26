@@ -36,5 +36,13 @@ module StaticBlocks
         end
       end
     end
+
+    def self.import(file)
+      CSV.foreach(file.path, headers: true) do |row|
+        static_block = find_by_id(row["id"]) || new
+        static_block.attributes = row.to_hash.slice(*accessible_attributes)
+        static_block.save!
+      end
+    end
   end
 end

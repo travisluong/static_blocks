@@ -23,6 +23,16 @@ module StaticBlocks
       end
     end
 
+    def import
+      StaticBlock.import(params[:file])
+      redirect_to root_url, notice: "Static Blocks imported"
+    end
+
+    def import_translations
+      StaticBlock.import_translations(params[:file])
+      redirect_to root_url, notice: "Static Block translations imported"
+    end
+
     # GET /static_blocks
     # GET /static_blocks.json
     def index
