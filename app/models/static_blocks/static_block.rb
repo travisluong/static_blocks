@@ -17,7 +17,6 @@ module StaticBlocks
     def self.to_csv(options = {})
       static_blocks = self.connection.select_all('select * from static_blocks_static_blocks')
       static_blocks_column_names = static_blocks.first.keys
-      binding.pry
       CSV.generate(options) do |csv|
         csv << static_blocks_column_names
         static_blocks.each do |s|
