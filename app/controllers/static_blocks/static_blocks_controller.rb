@@ -52,7 +52,7 @@ module StaticBlocks
     # GET /static_blocks
     # GET /static_blocks.json
     def index
-      @search = StaticBlock.search(params[:q])
+      @search = StaticBlock.order('title asc').search(params[:q])
       @static_blocks = @search.result.per_page_kaminari(params[:page]).per(10)
 
       respond_to do |format|
