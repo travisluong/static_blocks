@@ -24,7 +24,10 @@ module StaticBlocks
     end
 
     def import
-      if params[:file].original_filename.include? 'translations'
+      if params[:file].nil?
+        redirect_to root_url
+        flash[:error] = "You did not attach a file."
+      elsif params[:file].original_filename.include? 'translations'
         redirect_to root_url
         flash[:error] = "Wrong file. You uploaded the translations."
       else
@@ -34,7 +37,10 @@ module StaticBlocks
     end
 
     def import_translations
-      if params[:file].original_filename.include? 'translations'
+      if params[:file].nil?
+        redirect_to root_url
+        flash[:error] = "You did not attach a file."
+      elsif params[:file].original_filename.include? 'translations'
         StaticBlock.import_translations(params[:file])
         redirect_to root_url, notice: "Static Block translations imported"
       else
