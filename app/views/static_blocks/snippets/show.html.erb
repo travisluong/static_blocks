@@ -1,0 +1,23 @@
+<h1>Showing Snippet</h1>
+
+<div>
+  <p>
+    <b>Title:</b>
+    <%= @snippet.title %>
+  </p>
+
+  <p>
+    <b>Status:</b>
+    <%= @snippet.status %>
+  </p>
+
+  <p>
+    <%= link_to 'Edit', edit_snippet_path(@snippet), class: "btn btn-primary btn-warning" %>
+  </p>
+</div>
+
+<hr>
+
+<div class="well">
+  <%= raw(@snippet.content) %>
+</div>

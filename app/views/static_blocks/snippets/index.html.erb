@@ -1,4 +1,4 @@
-<h1>Listing static blocks</h1>
+<h1>Listing snippets</h1>
 <div class="row">
 <div class="span6">
   <h2>Search</h2>
@@ -20,19 +20,19 @@
 </div>
 <div class="span6">
   <h2>Import</h2>
-  <%= form_tag import_static_blocks_path, multipart: true do %>
+  <%= form_tag import_snippets_path, multipart: true do %>
     <%= file_field_tag :file %>
     <%= submit_tag "Import" %>
   <% end %>
   <h2>Import Translations</h2>
-  <%= form_tag import_translations_static_blocks_path, multipart: true do %>
+  <%= form_tag import_translations_snippets_path, multipart: true do %>
     <%= file_field_tag :file %>
     <%= submit_tag "Import Translations" %>
   <% end %>
 </div>
 </div>
 
-<%= paginate @static_blocks, :theme => 'twitter-bootstrap' %>
+<%= paginate @snippets, :theme => 'twitter-bootstrap' %>
 
 <table id="static-block-list" class="table table-striped">
   <tr>
@@ -44,16 +44,16 @@
     <th></th>
   </tr>
 
-  <% @static_blocks.each do |static_block| %>
+  <% @snippets.each do |snippet| %>
   <tr>
-    <td><%= static_block.title %></td>
-    <td><%= static_block.content %></td>
-    <td><%= static_block.status %></td>
-    <td><%= link_to 'Show', static_block_path(static_block), class: "btn btn-mini btn-success" %></td>
-    <td><%= link_to 'Edit', edit_static_block_path(static_block), class: "btn btn-mini btn-warning" %></td>
-    <td><%= link_to 'Destroy', static_block, class: "btn btn-mini btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= snippet.title %></td>
+    <td><%= snippet.content %></td>
+    <td><%= snippet.status %></td>
+    <td><%= link_to 'Show', snippet_path(snippet), class: "btn btn-mini btn-success" %></td>
+    <td><%= link_to 'Edit', edit_snippet_path(snippet), class: "btn btn-mini btn-warning" %></td>
+    <td><%= link_to 'Destroy', snippet, class: "btn btn-mini btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
   <% end %>
 </table>
 
-<%= paginate @static_blocks, :theme => 'twitter-bootstrap' %>
+<%= paginate @snippets, :theme => 'twitter-bootstrap' %>

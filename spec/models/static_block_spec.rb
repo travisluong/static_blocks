@@ -1,11 +1,11 @@
 require 'spec_helper'
 
-describe StaticBlocks::StaticBlock do
+describe StaticBlocks::Snippet do
   before do
-    @static_block = StaticBlocks::StaticBlock.create!({"title" => "foo", "content" => "bar", "status" => "published"})
+    @snippet = StaticBlocks::Snippet.create!({"title" => "foo", "content" => "bar", "status" => "published"})
   end
 
-  subject { @static_block }
+  subject { @snippet }
 
   it { should respond_to(:title) }
   it { should respond_to(:content) }

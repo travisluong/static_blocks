@@ -1,14 +1,14 @@
 require_dependency "static_blocks/application_controller"
 
 module StaticBlocks
-  class StaticBlocksController < ApplicationController
+  class SnippetsController < ApplicationController
 
     def export
       t = Time.now.strftime('%Y%m%d%H%M%S')
       filename = "static-blocks-#{t}.csv"
       respond_to do |format|
         format.csv do
-          send_data StaticBlock.to_csv, :filename => filename
+          send_data Snippet.to_csv, :filename => filename
         end
       end
     end
@@ -18,7 +18,7 @@ module StaticBlocks
       filename = "static-blocks-translations-#{t}.csv"
       respond_to do |format|
         format.csv do
-          send_data StaticBlock.translations_to_csv, :filename => filename
+          send_data Snippet.translations_to_csv, :filename => filename
         end
       end
     end
@@ -31,7 +31,7 @@ module StaticBlocks
         redirect_to root_url
         flash[:error] = "Wrong file. You uploaded the translations."
       else
-        StaticBlock.import(params[:file])
+        Snippet.import(params[:file])
         redirect_to root_url, notice: "Static Blocks imported"
       end
     end
@@ -41,7 +41,7 @@ module StaticBlocks
         redirect_to root_url
         flash[:error] = "You did not attach a file."
       elsif params[:file].original_filename.include? 'translations'
-        StaticBlock.import_translations(params[:file])
+        Snippet.import_translations(params[:file])
         redirect_to root_url, notice: "Static Block translations imported"
       else
         redirect_to root_url
@@ -52,82 +52,82 @@ module StaticBlocks
     # GET /static_blocks
     # GET /static_blocks.json
     def index
-      @search = StaticBlock.order('title asc').search(params[:q])
-      @static_blocks = @search.result.per_page_kaminari(params[:page]).per(10)
+      @search = Snippet.order('title asc').search(params[:q])
+      @snippets = @search.result.per_page_kaminari(params[:page]).per(10)
 
       respond_to do |format|
         format.html # index.html.erb
-        format.json { render json: @static_blocks }
+        format.json { render json: @snippets }
       end
     end
 
-    # GET /static_blocks/1
-    # GET /static_blocks/1.json
+    # GET /snippets/1
+    # GET /snippets/1.json
     def show
-      @static_block = StaticBlock.find(params[:id])
+      @snippet = Snippet.find(params[:id])
 
       respond_to do |format|
         format.html # show.html.erb
-        format.json { render json: @static_block }
+        format.json { render json: @snippet }
       end
     end
 
-    # GET /static_blocks/new
-    # GET /static_blocks/new.json
+    # GET /snippets/new
+    # GET /snippets/new.json
     def new
-      @static_block = StaticBlock.new
+      @snippet = Snippet.new
 
       respond_to do |format|
         format.html # new.html.erb
-        format.json { render json: @static_block }
+        format.json { render json: @snippet }
       end
     end
 
-    # GET /static_blocks/1/edit
+    # GET /snippets/1/edit
     def edit
-      @static_block = StaticBlock.find(params[:id])
+      @snippet = Snippet.find(params[:id])
     end
 
-    # POST /static_blocks
-    # POST /static_blocks.json
+    # POST /snippets
+    # POST /snippets.json
     def create
-      @static_block = StaticBlock.new(params[:static_block])
+      @snippet = Snippet.new(params[:snippet])
 
       respond_to do |format|
-        if @static_block.save
-          format.html { redirect_to @static_block, notice: 'Static block was successfully created.' }
-          format.json { render json: @static_block, status: :created, location: @static_block }
+        if @snippet.save
+          format.html { redirect_to @snippet, notice: 'Snippet was successfully created.' }
+          format.json { render json: @snippet, status: :created, location: @snippet }
         else
           format.html { render action: "new" }
-          format.json { render json: @static_block.errors, status: :unprocessable_entity }
+          format.json { render json: @snippet.errors, status: :unprocessable_entity }
         end
       end
     end
 
-    # PUT /static_blocks/1
-    # PUT /static_blocks/1.json
+    # PUT /snippets/1
+    # PUT /snippets/1.json
     def update
-      @static_block = StaticBlock.find(params[:id])
+      @snippet = Snippet.find(params[:id])
 
       respond_to do |format|
-        if @static_block.update_attributes(params[:static_block])
-          format.html { redirect_to @static_block, notice: 'Static block was successfully updated.' }
+        if @snippet.update_attributes(params[:snippet])
+          format.html { redirect_to @snippet, notice: 'Static block was successfully updated.' }
           format.json { head :no_content }
         else
           format.html { render action: "edit" }
-          format.json { render json: @static_block.errors, status: :unprocessable_entity }
+          format.json { render json: @snippet.errors, status: :unprocessable_entity }
         end
       end
     end
 
-    # DELETE /static_blocks/1
-    # DELETE /static_blocks/1.json
+    # DELETE /snippets/1
+    # DELETE /snippets/1.json
     def destroy
-      @static_block = StaticBlock.find(params[:id])
-      @static_block.destroy
+      @snippet = Snippet.find(params[:id])
+      @snippet.destroy
 
       respond_to do |format|
-        format.html { redirect_to static_blocks_url }
+        format.html { redirect_to snippets_url }
         format.json { head :no_content }
       end
     end

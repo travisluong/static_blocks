@@ -11,13 +11,13 @@
   <div class="navbar">
     <div class="navbar-inner">
       <div class="container">
-        <%= link_to "Static Blocks", static_blocks_path, :class => "brand" %>
+        <%= link_to "Static Blocks", snippets_path, :class => "brand" %>
         <div class="nav-collapse collapse">
           <ul class="nav pull-right">
-            <li><%= link_to "List blocks", static_blocks_path %></li>
-            <li><%= link_to "New block", new_static_block_path %></li>
-            <li><%= link_to "Export", export_static_blocks_path(:format => :csv) %></li>
-            <li><%= link_to "Export translations", export_translations_static_blocks_path(:format => :csv) %></li> </ul>
+            <li><%= link_to "List blocks", snippets_path %></li>
+            <li><%= link_to "New block", new_snippet_path %></li>
+            <li><%= link_to "Export", export_snippets_path(:format => :csv) %></li>
+            <li><%= link_to "Export translations", export_translations_snippets_path(:format => :csv) %></li> </ul>
         </div><!--/.nav-collapse -->
       </div>
     </div>

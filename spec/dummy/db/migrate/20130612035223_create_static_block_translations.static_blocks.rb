@@ -1,7 +1,7 @@
 # This migration comes from static_blocks (originally 20130612034816)
-class CreateStaticBlockTranslations < ActiveRecord::Migration
+class CreateSnippetTranslations < ActiveRecord::Migration
   def up
-    StaticBlocks::StaticBlock.create_translation_table!({
+    StaticBlocks::Snippet.create_translation_table!({
       content: :text
     }, {
       migrate_data: true
@@ -9,6 +9,6 @@ class CreateStaticBlockTranslations < ActiveRecord::Migration
   end
 
   def down
-    StaticBlock.drop_translation_table! migrate_data: true
+    Snippet.drop_translation_table! migrate_data: true
   end
 end

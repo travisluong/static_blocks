@@ -13,18 +13,18 @@
 
 ActiveRecord::Schema.define(:version => 20130612035223) do
 
-  create_table "static_blocks_static_block_translations", :force => true do |t|
-    t.integer  "static_blocks_static_block_id"
+  create_table "static_blocks_snippet_translations", :force => true do |t|
+    t.integer  "static_blocks_snippet_id"
     t.string   "locale"
     t.text     "content"
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
   end
 
-  add_index "static_blocks_static_block_translations", ["locale"], :name => "index_static_blocks_static_block_translations_on_locale"
-  add_index "static_blocks_static_block_translations", ["static_blocks_static_block_id"], :name => "index_bc40576269460a507bac1fc29dc0b04705279cb3"
+  add_index "static_blocks_snippet_translations", ["locale"], :name => "index_static_blocks_snippet_translations_on_locale"
+  add_index "static_blocks_snippet_translations", ["static_blocks_snippet_id"], :name => "index_bc40576269460a507bac1fc29dc0b04705279cb3"
 
-  create_table "static_blocks_static_blocks", :force => true do |t|
+  create_table "static_blocks_snippets", :force => true do |t|
     t.string   "title"
     t.text     "content"
     t.string   "status"

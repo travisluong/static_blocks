@@ -1,7 +1,7 @@
 # This migration comes from static_blocks (originally 20130611042319)
-class CreateStaticBlocksStaticBlocks < ActiveRecord::Migration
+class CreateStaticBlocksSnippets < ActiveRecord::Migration
   def change
-    create_table :static_blocks_static_blocks do |t|
+    create_table :static_blocks_snippets do |t|
       t.string :title
       t.text :content
       t.string :status

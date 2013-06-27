@@ -16,7 +16,7 @@ module StaticBlocks
 
     initializer "static_blocks.include_helpers" do
       ActiveSupport.on_load(:action_controller) do
-        helper StaticBlocks::StaticBlocksHelper
+        helper StaticBlocks::SnippetsHelper
       end
     end
   end

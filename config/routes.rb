@@ -1,5 +1,5 @@
 StaticBlocks::Engine.routes.draw do
-  resources :static_blocks do
+  resources :snippets do
     collection do
       get 'export'
       get 'export_translations'
@@ -7,5 +7,5 @@ StaticBlocks::Engine.routes.draw do
       post :import_translations
     end
   end
-  root to: 'static_blocks#index'
+  root to: 'snippets#index'
 end

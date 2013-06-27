@@ -1,13 +1,13 @@
 require 'spec_helper'
 
-describe StaticBlocks::StaticBlocksHelper do
+describe StaticBlocks::SnippetsHelper do
   before do
-    s = StaticBlocks::StaticBlock.create!({"title" => "foo", "content" => "bar", "status" => "published"})
+    s = StaticBlocks::Snippet.create!({"title" => "foo", "content" => "bar", "status" => "published"})
   end
 
-  describe "static_block helper" do
+  describe "snippet helper" do
     it "should return content" do
-      static_block_for("foo").should eq "bar"
+      snippet_for("foo").should eq "bar"
     end
   end
 end
