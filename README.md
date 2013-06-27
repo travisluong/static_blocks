@@ -8,6 +8,7 @@ Static Blocks is an ultra light-weight CMS for Ruby on Rails. Create static bloc
 * Optional http basic authentication
 * Search
 * wysihtml5 editor
+* csv import & export
 
 ## Installation
 

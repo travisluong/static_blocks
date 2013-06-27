@@ -11,7 +11,7 @@ module StaticBlocks
     end
 
     def clear_cache
-      Rails.cache.delete("static_block::"+title)
+      Rails.cache.delete("static_block::"+I18n.locale.to_s+"::"+title)
     end
 
     def self.to_csv(options = {})
