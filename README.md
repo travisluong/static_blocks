@@ -39,12 +39,12 @@ rake db:migrate
 Mount engine in routes.rb:
 
 ```ruby
-mount StaticBlocks::Engine => "/static_blocks_admin"
+mount StaticBlocks::Engine => "/static_blocks"
 ```
 
 ## Usage
 
-Visit `/static_blocks_admin` and create some static blocks.
+Visit `/static_blocks` and create some static blocks.
 
 Use the `static_block_for` method or it's alias `s` to output a block onto any view template. Pass in the title of the static block as argument. Use `raw` if you do not want to escape the html.
 

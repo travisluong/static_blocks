@@ -4,7 +4,7 @@ feature "creating snippets" do
 
   before do
     static_blocks = StaticBlocks::Snippet.create(title: 'foo', content: 'bar', status: 'Published')
-    visit "/static_blocks_admin"
+    visit "/static_blocks"
   end
 
   scenario "can see admin page" do
@@ -34,7 +34,7 @@ feature "editing and translating static blocks" do
 
   before do
     snippet = StaticBlocks::Snippet.create(title: 'foo', content: 'bar', status: 'Published')
-    visit "/static_blocks_admin"
+    visit "/static_blocks"
   end
 
   scenario "can edit and translate static block" do
@@ -56,7 +56,7 @@ feature "deleting static blocks" do
 
   before do
     snippet = StaticBlocks::Snippet.create(title: 'foo', content: 'bar', status: 'Published')
-    visit "/static_blocks_admin"
+    visit "/static_blocks"
   end
 
   scenario "can delete static block" do
