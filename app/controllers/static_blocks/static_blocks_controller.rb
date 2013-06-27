@@ -14,8 +14,8 @@ module StaticBlocks
     end
 
     def export_translations
-        t = Time.now.strftime('%Y%m%d%H%M%S')
-        filename = "static-blocks-translations-#{t}.csv"
+      t = Time.now.strftime('%Y%m%d%H%M%S')
+      filename = "static-blocks-translations-#{t}.csv"
       respond_to do |format|
         format.csv do
           send_data StaticBlock.translations_to_csv, :filename => filename
@@ -24,13 +24,23 @@ module StaticBlocks
     end
 
     def import
-      StaticBlock.import(params[:file])
-      redirect_to root_url, notice: "Static Blocks imported"
+      if params[:file].original_filename.include? 'translations'
+        redirect_to root_url
+        flash[:error] = "Wrong file. You uploaded the translations."
+      else
+        StaticBlock.import(params[:file])
+        redirect_to root_url, notice: "Static Blocks imported"
+      end
     end
 
     def import_translations
-      StaticBlock.import_translations(params[:file])
-      redirect_to root_url, notice: "Static Block translations imported"
+      if params[:file].original_filename.include? 'translations'
+        StaticBlock.import_translations(params[:file])
+        redirect_to root_url, notice: "Static Block translations imported"
+      else
+        redirect_to root_url
+        flash[:error] = "Wrong file. You uploaded the default static blocks."
+      end
     end
 
     # GET /static_blocks
