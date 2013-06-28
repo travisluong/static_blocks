@@ -34,11 +34,11 @@
     <% end %>
     <% end %>
 
-    <div id="locale">
-      Language
+    <div id="locale" class="well well-small">
+      <strong>Language:</strong>
 
       <% StaticBlocks.config.locales.each do |loc| %>
-        <%= link_to_unless_current loc, locale: loc %>
+        &nbsp;<%= link_to_unless_current loc, locale: loc %>
       <% end %>
     </div>
 
