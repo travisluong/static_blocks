@@ -7,7 +7,7 @@ module StaticBlocks
       source_root File.expand_path("../../templates", __FILE__)
 
       def copy_static_blocks_config
-        copy_file "static_blocks_config_template.rb", "config/initializers/static_block.rb"
+        copy_file "static_blocks_config_template.rb", "config/initializers/static_blocks.rb"
       end
 
       def copy_migrations
