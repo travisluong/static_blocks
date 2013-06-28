@@ -1,23 +1,23 @@
 require "spec_helper"
 
-feature "search blocks" do
+feature "search snippets" do
 
   before do
     visit "/static_blocks"
-    click_link "New block"
+    click_link "New snippet"
     fill_in "Title", :with => "foo"
     fill_in "Content", :with => "english bar"
     click_button "Submit"
-    click_link "List blocks"
+    click_link "List snippets"
   end
 
-  scenario "can search default blocks" do
+  scenario "can search default snippets" do
     fill_in "Content contains", :with => "english bar"
     click_button "Search"
     page.should have_content("english bar")
   end
 
-  describe "search translated blocks" do
+  describe "search translated snippets" do
 
     before do
       visit "/static_blocks"
@@ -25,10 +25,10 @@ feature "search blocks" do
       click_link "Edit"
       fill_in "snippet_content", :with => "wookie bar"
       click_button "Submit"
-      click_link "List blocks"
+      click_link "List snippets"
     end
 
-    scenario "can search translated blocks" do
+    scenario "can search translated snippets" do
       fill_in "Title contains", :with => "foo"
       fill_in "Content contains", :with => "wookie bar"
       select('Published', :from => "Status")

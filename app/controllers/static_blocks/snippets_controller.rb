@@ -29,10 +29,10 @@ module StaticBlocks
         flash[:error] = "You did not attach a file."
       elsif params[:file].original_filename.include? 'translations'
         redirect_to root_url
-        flash[:error] = "Wrong file. You uploaded the translations."
+        flash[:error] = "Wrong file. Please upload the correct snippets csv."
       else
         Snippet.import(params[:file])
-        redirect_to root_url, notice: "Static Blocks imported"
+        redirect_to root_url, notice: "Snippets imported"
       end
     end
 
@@ -42,10 +42,10 @@ module StaticBlocks
         flash[:error] = "You did not attach a file."
       elsif params[:file].original_filename.include? 'translations'
         Snippet.import_translations(params[:file])
-        redirect_to root_url, notice: "Static Block translations imported"
+        redirect_to root_url, notice: "Snippet translations imported"
       else
         redirect_to root_url
-        flash[:error] = "Wrong file. You uploaded the default static blocks."
+        flash[:error] = "Wrong file. Please upload the correct snippet translations csv."
       end
     end
 

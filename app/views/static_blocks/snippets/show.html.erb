@@ -1,22 +1,17 @@
-<h1>Showing Snippet</h1>
+<h1 class="pull-left">Showing Snippet</h1>
 
-<div>
-  <p>
-    <b>Title:</b>
-    <%= @snippet.title %>
-  </p>
+<%= link_to 'Edit', edit_snippet_path(@snippet), class: "btn btn-primary btn-warning pull-right showing-edit-button" %>
 
-  <p>
-    <b>Status:</b>
-    <%= @snippet.status %>
-  </p>
-
-  <p>
-    <%= link_to 'Edit', edit_snippet_path(@snippet), class: "btn btn-primary btn-warning" %>
-  </p>
-</div>
-
-<hr>
+<table class="table table-striped table-bordered">
+  <tr>
+    <th>Title</th>
+    <th>Status</th>
+  </tr>
+  <tr>
+    <td><%= @snippet.title %></td>
+    <td width="20%"><%= @snippet.status %></td>
+  </tr>
+</table>
 
 <div class="well">
   <%= raw(@snippet.content) %>

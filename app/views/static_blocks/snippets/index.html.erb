@@ -19,15 +19,15 @@
   <% end %>
 </div>
 <div class="span6">
-  <h2>Import</h2>
+  <h2>Import snippets</h2>
   <%= form_tag import_snippets_path, multipart: true do %>
     <%= file_field_tag :file %>
-    <%= submit_tag "Import" %>
+    <%= submit_tag "Import snippets" %>
   <% end %>
-  <h2>Import Translations</h2>
+  <h2>Import translations</h2>
   <%= form_tag import_translations_snippets_path, multipart: true do %>
     <%= file_field_tag :file %>
-    <%= submit_tag "Import Translations" %>
+    <%= submit_tag "Import translations" %>
   <% end %>
 </div>
 </div>
