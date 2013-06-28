@@ -46,6 +46,7 @@
 
   </div>
 
+  <% if StaticBlocks.config.wysihtml5 %>
   <script type="text/javascript">
   $('.wysihtml5').each(function(i, elem) {
     $(elem).wysihtml5({
@@ -53,6 +54,7 @@
     });
   });
   </script>
+  <% end %>
 
 </body>
 </html>

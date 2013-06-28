@@ -28,6 +28,7 @@ module StaticBlocks
       @@config.http_auth = false
       @@config.username = "admin"
       @@config.password = "password"
+      @@config.wysihtml5 = true
     end
 
     yield @@config if block

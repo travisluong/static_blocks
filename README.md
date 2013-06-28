@@ -1,6 +1,8 @@
 # Static Blocks
 
-Static Blocks is an ultra light-weight CMS for Ruby on Rails. Create static blocks of content. Place them anywhere in your views.
+Static Blocks is an ultra light-weight CMS for Ruby on Rails.
+
+Create snippets of content. Place them anywhere in your views.
 
 ## Features
 * Simple admin interface
@@ -46,10 +48,10 @@ mount StaticBlocks::Engine => "/static_blocks"
 
 Visit `/static_blocks` and create some static blocks.
 
-Use the `static_block_for` method or it's alias `s` to output a block onto any view template. Pass in the title of the static block as argument. Use `raw` if you do not want to escape the html.
+Use the `snippet_for` method or it's alias `s` to output a block onto any view template. Pass in the title of the static block as argument. Use `raw` if you do not want to escape the html.
 
 ```
-<%=raw static_block_for('foo') %>
+<%=raw snippet_for('foo') %>
 <%=raw s('foo') %>
 ```
 
@@ -63,6 +65,7 @@ StaticBlocks.config do |config|
   config.http_auth = false
   config.username = ENV['STATIC_BLOCKS_USERNAME']
   config.password = ENV['STATIC_BLOCKS_PASSWORD']
+  config.wysihtml5 = true
 end
 ```
 
@@ -71,7 +74,7 @@ end
 Static Blocks supports i18n internationalization. Pass in an array of locales to it's config option:
 
 ```ruby
-config.locales = ['en', 'wk', 'zh', 'pirate']
+config.locales = ['en', 'wk', 'pirate']
 ```
 
 ### Optional http basic authentication
@@ -82,8 +85,11 @@ Static Blocks has an optional http basic authentication which is turned off by d
 config.http_auth = true
 ```
 
+### wysihtml5 editor
+Static Blocks uses the wysihtml5 editor which is turned on by default. To deactive, set the config option to false.
+
 ## Credits
-Written by Travis Luong
+Created by Travis Luong
 
 ## License
 [MIT](http://opensource.org/licenses/MIT)
