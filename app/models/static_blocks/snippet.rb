@@ -31,7 +31,10 @@ module StaticBlocks
         INNER JOIN static_blocks_snippets s
         ON t.static_blocks_snippet_id = s.id
         ')
-
+      if translations.empty?
+        flash[:error] = "There are no translations"
+        return
+      end
       translation_column_names = translations.first.keys
       CSV.generate(options) do |csv|
         csv << translation_column_names
@@ -68,16 +71,19 @@ module StaticBlocks
 
         if translation.present?
           # update existing translation
-          raw_sql = "
-          UPDATE static_blocks_snippet_translations
-          SET content='%s', created_at='%s', updated_at='%s'
-          WHERE static_blocks_snippet_id='%d' AND locale='%s'" % [row['content'], row['created_at'], row['updated_at'], static_block.id, row['locale']]
+          sql_array = ["
+            UPDATE static_blocks_snippet_translations
+            SET content=?, created_at=?, updated_at=?
+            WHERE static_blocks_snippet_id=? AND locale=?
+            ", row['content'], row['created_at'], row['updated_at'], static_block.id, row['locale']]
+          raw_sql = sanitize_sql_array(sql_array)
         else
           # create new translation
-          raw_sql = "
+          sql_array = ["
           INSERT INTO static_blocks_snippet_translations
           ('static_blocks_snippet_id', 'locale', 'content', 'created_at', 'updated_at') VALUES
-          ('%d', '%s', '%s', '%s', '%s')" % [static_block.id, row['locale'], row['content'], row['created_at'], row['updated_at']]
+          (?, ?, ?, ?, ?)", static_block.id, row['locale'], row['content'], row['created_at'], row['updated_at']]
+          raw_sql = sanitize_sql_array(sql_array)
         end
         ActiveRecord::Base.connection.execute(raw_sql)
       end

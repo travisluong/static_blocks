@@ -4,8 +4,15 @@ module StaticBlocks
   class SnippetsController < ApplicationController
 
     def export
+      unless Snippet.any?
+        flash[:error] = "There are no snippets"
+        redirect_to root_url
+        return
+      end
+
       t = Time.now.strftime('%Y%m%d%H%M%S')
-      filename = "static-blocks-#{t}.csv"
+      filename = "static-blocks-snippets-#{t}.csv"
+
       respond_to do |format|
         format.csv do
           send_data Snippet.to_csv, :filename => filename
@@ -14,8 +21,15 @@ module StaticBlocks
     end
 
     def export_translations
+      unless Snippet.any?
+        flash[:error] = "There are no translations"
+        redirect_to root_url
+        return
+      end
+
       t = Time.now.strftime('%Y%m%d%H%M%S')
       filename = "static-blocks-translations-#{t}.csv"
+
       respond_to do |format|
         format.csv do
           send_data Snippet.translations_to_csv, :filename => filename
@@ -27,12 +41,12 @@ module StaticBlocks
       if params[:file].nil?
         redirect_to root_url
         flash[:error] = "You did not attach a file."
-      elsif params[:file].original_filename.include? 'translations'
-        redirect_to root_url
-        flash[:error] = "Wrong file. Please upload the correct snippets csv."
-      else
+      elsif params[:file].original_filename.include? 'static-blocks-snippets'
         Snippet.import(params[:file])
         redirect_to root_url, notice: "Snippets imported"
+      else
+        redirect_to root_url
+        flash[:error] = "Error. Please upload a valid static-blocks-snippets csv."
       end
     end
 
@@ -40,12 +54,12 @@ module StaticBlocks
       if params[:file].nil?
         redirect_to root_url
         flash[:error] = "You did not attach a file."
-      elsif params[:file].original_filename.include? 'translations'
+      elsif params[:file].original_filename.include? 'static-blocks-translations'
         Snippet.import_translations(params[:file])
         redirect_to root_url, notice: "Snippet translations imported"
       else
         redirect_to root_url
-        flash[:error] = "Wrong file. Please upload the correct snippet translations csv."
+        flash[:error] = "Error. Please upload a valid static-blocks-translations csv."
       end
     end
 
