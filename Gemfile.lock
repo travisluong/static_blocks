@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    static_blocks (0.1.1)
+    static_blocks (1.0.0)
       bootstrap-kaminari-views
       bootstrap-sass
       bootstrap-wysihtml5-rails
