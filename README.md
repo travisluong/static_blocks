@@ -38,7 +38,7 @@ Run migrations:
 rake db:migrate
 ```
 
-Mount engine in routes.rb:
+Ensure that engine is mounted in routes.rb:
 
 ```ruby
 mount StaticBlocks::Engine => "/static_blocks"

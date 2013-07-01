@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
-  root to: redirect("/#{I18n.default_locale}/info/index")
   mount StaticBlocks::Engine => "/static_blocks"
+
+  root to: redirect("/#{I18n.default_locale}/info/index")
 
   scope ":locale", locale: /#{I18n.available_locales.join("|")}/ do
     get "info/index"

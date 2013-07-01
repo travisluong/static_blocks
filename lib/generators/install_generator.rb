@@ -13,6 +13,10 @@ module StaticBlocks
       def copy_migrations
         rake('static_blocks:install:migrations')
       end
+
+      def add_mount_route
+        route 'mount StaticBlocks::Engine => "/static_blocks"'
+      end
     end
   end
 end
