@@ -3,7 +3,7 @@ module StaticBlocks
     attr_accessible :content, :status, :title
     after_save :clear_cache
     scope :published, where(:status => 'published')
-    translates :content
+    translates :content if StaticBlocks.config.globalize
     validates :title, uniqueness: true
 
     def to_s

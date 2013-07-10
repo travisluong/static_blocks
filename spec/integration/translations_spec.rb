@@ -21,4 +21,13 @@ feature "translations" do
     page.should_not have_content("wookie bar")
   end
 
+  scenario "should not have translations if globalize config false" do
+    page.should have_content("Import translations")
+    page.should have_content("Export translations")
+    StaticBlocks.config.globalize = false
+    visit "/static_blocks"
+    page.should_not have_content("Import translations")
+    page.should_not have_content("Export translations")
+  end
+
 end

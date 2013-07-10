@@ -2,21 +2,7 @@
 <div class="row">
 <div class="span6">
   <h2>Search</h2>
-  <%= search_form_for @search do |f| %>
-    <div class="field">
-      <%= f.label :title_cont, "Title contains" %>
-      <%= f.text_field :title_cont %>
-    </div>
-    <div class="field">
-      <%= f.label :translations_content_cont, "Content contains" %>
-      <%= f.text_field :translations_content_cont %>
-    </div>
-    <div class="field">
-      <%= f.label :status_cont, "Status contains" %>
-      <%= f.select(:status_cont, [['', ''], ['Draft', 'draft'], ['Published', 'published']]) %>
-    </div>
-    <div class="actions"><%= f.submit "Search" %></div>
-  <% end %>
+  <%= render 'search' %>
 </div>
 <div class="span6">
   <h2>Import snippets</h2>
@@ -24,10 +10,12 @@
     <%= file_field_tag :file %>
     <%= submit_tag "Import snippets" %>
   <% end %>
-  <h2>Import translations</h2>
-  <%= form_tag import_translations_snippets_path, multipart: true do %>
-    <%= file_field_tag :file %>
-    <%= submit_tag "Import translations" %>
+  <% if StaticBlocks.config.globalize %>
+    <h2>Import translations</h2>
+    <%= form_tag import_translations_snippets_path, multipart: true do %>
+      <%= file_field_tag :file %>
+      <%= submit_tag "Import translations" %>
+    <% end %>
   <% end %>
   <p class="help-block">*If you are using translations, you must import snippets first and then translations.</p>
 </div>

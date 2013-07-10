@@ -1,0 +1,37 @@
+<% if StaticBlocks.config.globalize %>
+
+  <%= search_form_for @search do |f| %>
+    <div class="field">
+      <%= f.label :title_cont, "Title contains" %>
+      <%= f.text_field :title_cont %>
+    </div>
+    <div class="field">
+      <%= f.label :translations_content_cont, "Content contains" %>
+      <%= f.text_field :translations_content_cont %>
+    </div>
+    <div class="field">
+      <%= f.label :status_cont, "Status contains" %>
+      <%= f.select(:status_cont, [['', ''], ['Draft', 'draft'], ['Published', 'published']]) %>
+    </div>
+    <div class="actions"><%= f.submit "Search" %></div>
+  <% end %>
+
+<% else %>
+
+  <%= search_form_for @search do |f| %>
+    <div class="field">
+    <%= f.label :title_cont, "Title contains" %>
+      <%= f.text_field :title_cont %>
+    </div>
+    <div class="field">
+      <%= f.label :content_cont, "Content contains" %>
+      <%= f.text_field :content_cont %>
+    </div>
+    <div class="field">
+      <%= f.label :status_cont, "Status contains" %>
+      <%= f.select(:status_cont, [['', ''], ['Draft', 'draft'], ['Published', 'published']]) %>
+    </div>
+    <div class="actions"><%= f.submit "Search" %></div>
+  <% end %>
+
+<% end %>

@@ -67,7 +67,7 @@ module StaticBlocks
     # GET /static_blocks.json
     def index
       @search = Snippet.order('title asc').search(params[:q])
-      @snippets = @search.result.per_page_kaminari(params[:page]).per(10)
+      @snippets = @search.result(distinct: true).per_page_kaminari(params[:page]).per(10)
 
       respond_to do |format|
         format.html # index.html.erb

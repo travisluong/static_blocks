@@ -17,7 +17,9 @@
             <li><%= link_to "List snippets", snippets_path %></li>
             <li><%= link_to "New snippet", new_snippet_path %></li>
             <li><%= link_to "Export snippets", export_snippets_path(:format => :csv) %></li>
-            <li><%= link_to "Export translations", export_translations_snippets_path(:format => :csv) %></li> </ul>
+            <% if StaticBlocks.config.globalize %>
+              <li><%= link_to "Export translations", export_translations_snippets_path(:format => :csv) %></li> </ul>
+            <% end %>
         </div><!--/.nav-collapse -->
       </div>
     </div>
@@ -34,13 +36,15 @@
     <% end %>
     <% end %>
 
-    <div id="locale" class="well well-small">
-      <strong>Locale:</strong>
+    <% if StaticBlocks.config.globalize %>
+      <div id="locale" class="well well-small">
+        <strong>Locale:</strong>
 
-      <% StaticBlocks.config.locales.each do |loc| %>
-        &nbsp;<%= link_to_unless_current loc, locale: loc %>
-      <% end %>
-    </div>
+        <% StaticBlocks.config.locales.each do |loc| %>
+          &nbsp;<%= link_to_unless_current loc, locale: loc %>
+        <% end %>
+      </div>
+    <% end %>
 
     <%= yield %>
 
