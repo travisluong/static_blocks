@@ -85,7 +85,11 @@ module StaticBlocks
           (?, ?, ?, ?, ?)", static_block.id, row['locale'], row['content'], row['created_at'], row['updated_at']]
           raw_sql = sanitize_sql_array(sql_array)
         end
+
         ActiveRecord::Base.connection.execute(raw_sql)
+
+        # manually clear the cache for that snippet
+        Rails.cache.delete("snippet::#{row['locale']}::#{row['title']}")
       end
     end
   end
