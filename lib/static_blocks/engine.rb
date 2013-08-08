@@ -24,12 +24,11 @@ module StaticBlocks
   def self.config(&block)
     unless defined? @@config
       @@config ||= StaticBlocks::Engine::Configuration.new
+      @@config.locales = ['en']
       @@config.http_auth = false
       @@config.username = "admin"
       @@config.password = "password"
       @@config.wysihtml5 = true
-      @@config.globalize = false
-      @@config.locales = ['en']
     end
 
     yield @@config if block
