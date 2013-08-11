@@ -68,8 +68,8 @@ module StaticBlocks
         # create new translation
         sql_array = ["
         INSERT INTO static_blocks_snippet_translations
-        ('id', 'static_blocks_snippet_id', 'locale', 'content', 'created_at', 'updated_at') VALUES
-        (?, ?, ?, ?, ?, ?)", row['id'], static_block.id, row['locale'], row['content'], row['created_at'], row['updated_at']]
+        ('static_blocks_snippet_id', 'locale', 'content', 'created_at', 'updated_at') VALUES
+        (?, ?, ?, ?, ?)", static_block.id, row['locale'], row['content'], row['created_at'], row['updated_at']]
         insert_sql = sanitize_sql_array(sql_array)
 
         ActiveRecord::Base.connection.execute(insert_sql)
