@@ -53,40 +53,26 @@ module StaticBlocks
     end
 
     def self.import_translations(file)
+      # delete all translations
+      delete_sql = "DELETE FROM static_blocks_snippet_translations"
+      translation = ActiveRecord::Base.connection.execute(delete_sql)
+
+      # add all translations
       CSV.foreach(file.path, headers: true) do |row|
         static_block = find_by_title(row['title'])
 
         # return if nil
-        # we don't want to update or insert if the snippet doesn't exist
+        # we don't want to update or insert a translation if the snippet doesn't exist
         return if static_block.nil?
 
-        # find translation
-        raw_sql = "
-        SELECT s.title, t.* FROM static_blocks_snippet_translations t
-        INNER JOIN static_blocks_snippets s
-        ON t.static_blocks_snippet_id = s.id
-        WHERE s.title='#{row['title']}' AND t.locale='#{row['locale']}'
-        "
-        translation = ActiveRecord::Base.connection.execute(raw_sql)
+        # create new translation
+        sql_array = ["
+        INSERT INTO static_blocks_snippet_translations
+        ('id', 'static_blocks_snippet_id', 'locale', 'content', 'created_at', 'updated_at') VALUES
+        (?, ?, ?, ?, ?, ?)", row['id'], static_block.id, row['locale'], row['content'], row['created_at'], row['updated_at']]
+        insert_sql = sanitize_sql_array(sql_array)
 
-        if translation.present?
-          # update existing translation
-          sql_array = ["
-            UPDATE static_blocks_snippet_translations
-            SET content=?, created_at=?, updated_at=?
-            WHERE static_blocks_snippet_id=? AND locale=?
-            ", row['content'], row['created_at'], row['updated_at'], static_block.id, row['locale']]
-          raw_sql = sanitize_sql_array(sql_array)
-        else
-          # create new translation
-          sql_array = ["
-          INSERT INTO static_blocks_snippet_translations
-          ('static_blocks_snippet_id', 'locale', 'content', 'created_at', 'updated_at') VALUES
-          (?, ?, ?, ?, ?)", static_block.id, row['locale'], row['content'], row['created_at'], row['updated_at']]
-          raw_sql = sanitize_sql_array(sql_array)
-        end
-
-        ActiveRecord::Base.connection.execute(raw_sql)
+        ActiveRecord::Base.connection.execute(insert_sql)
 
         # manually clear the cache for that snippet
         Rails.cache.delete("snippet::#{row['locale']}::#{row['title']}")
