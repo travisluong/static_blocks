@@ -17,8 +17,8 @@ ActiveRecord::Schema.define(:version => 20130612035223) do
     t.integer  "static_blocks_snippet_id"
     t.string   "locale"
     t.text     "content"
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
   end
 
   add_index "static_blocks_snippet_translations", ["locale"], :name => "index_static_blocks_snippet_translations_on_locale"
