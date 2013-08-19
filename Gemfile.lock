@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    static_blocks (1.1.5)
+    static_blocks (1.2.0)
       bootstrap-kaminari-views
       bootstrap-sass
       bootstrap-wysihtml5-rails
@@ -179,7 +179,7 @@ GEM
     terminal-table (1.4.5)
     thor (0.18.1)
     tilt (1.4.1)
-    treetop (1.4.14)
+    treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
     tzinfo (0.3.37)

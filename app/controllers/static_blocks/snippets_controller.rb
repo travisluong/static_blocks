@@ -43,12 +43,12 @@ module StaticBlocks
       if params[:file].nil?
         redirect_to root_url
         flash[:error] = "You did not attach a file."
-      elsif params[:file].original_filename.include? 'static-blocks-snippets'
+      elsif params[:file].original_filename.include? '-snippets'
         Snippet.import(params[:file])
         redirect_to root_url, notice: "Snippets imported"
       else
         redirect_to root_url
-        flash[:error] = "Error. Please upload a valid static-blocks-snippets csv."
+        flash[:error] = "Error. Please upload a valid snippets csv."
       end
     end
 
@@ -56,7 +56,7 @@ module StaticBlocks
       if params[:file].nil?
         redirect_to root_url
         flash[:error] = "You did not attach a file."
-      elsif params[:file].original_filename.include? 'static-blocks-translations'
+      elsif params[:file].original_filename.include? '-translations'
         Snippet.import_translations(params[:file])
         redirect_to root_url, notice: "Snippet translations imported"
       else
