@@ -10,8 +10,9 @@ module StaticBlocks
         return
       end
 
-      t = Time.now.strftime('%Y%m%d%H%M%S')
-      filename = "static-blocks-snippets-#{t}.csv"
+      t = Time.now.strftime('%Y-%m-%d-%H-%M-%S')
+      app_name = Rails.application.class.parent_name
+      filename = "#{app_name}-snippets-#{t}.csv"
 
       respond_to do |format|
         format.csv do
@@ -27,8 +28,9 @@ module StaticBlocks
         return
       end
 
-      t = Time.now.strftime('%Y%m%d%H%M%S')
-      filename = "static-blocks-translations-#{t}.csv"
+      t = Time.now.strftime('%Y-%m-%d-%H-%M-%S')
+      app_name = Rails.application.class.parent_name
+      filename = "#{app_name}-translations-#{t}.csv"
 
       respond_to do |format|
         format.csv do
